@@ -1,3 +1,6 @@
+0.3.0+kde4 - 20090111
+ - Fix kde4 support
+
 0.3.0 - 20080126
 - ServiceType "all/all"
 - Version renumbering

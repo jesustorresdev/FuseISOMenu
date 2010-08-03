@@ -1,56 +1,55 @@
-#konqueror service menu for fuseisomenu.sh
 [Desktop Entry]
-Actions=automount-here;automount-to-desktop;mount-here;mount-to-desktop;unmount;unmount-all;show-all;help
-#Icon=cdimage
-#Icon=cdrom_mount
+Actions=automount-here;automount-to-home;mount-here;mount-to-home;unmount;unmount-all;show-all;help
+Type=Service
 Encoding=UTF-8
-#ServiceTypes=application/x-iso,inode/ISO-image,application/x-cue
+ServiceTypes=KonqPopupMenu/Plugin,application/x-cd-image,application/x-cue,inode/directory
+#ServiceTypes=KonqPopupMenu/Plugin,application/x-cd-image,application/x-cue,inode/mount-point
+#ServiceTypes=KonqPopupMenu/Plugin,all/all
 #FilePattern=*.iso;*.ISO;*.bin;*.BIN;*.nrg;*.NRG;*.mdf;*.MDF;*.img;*.IMG
-ServiceTypes=all/all
 X-KDE-Submenu=FuseISO Mount/Unmount
 
 [Desktop Action automount-here]
 Name=AutoMount here (./FUSEMNT-isofilename)
 #Icon=add
-Icon=redo
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -m "." %F
+Icon=edit-redo.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -m "." %F
 
-[Desktop Action automount-to-desktop]
-Name=AutoMount to Desktop (~/Desktop/FUSEMNT-isofilename)
+[Desktop Action automount-to-home]
+Name=AutoMount to Home (~/FUSEMNT-isofilename)
 #Icon=add
-Icon=redo
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -m "${HOME}/Desktop" %F
+Icon=edit-redo.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -m "${HOME}" %F
 
 [Desktop Action mount-here]
 Name=Mount here...
 #Icon=add
-Icon=redo
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -a -m "." %F
+Icon=edit-redo.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -a -m "." %F
 
-[Desktop Action mount-to-desktop]
-Name=Mount to Desktop...
+[Desktop Action mount-to-home]
+Name=Mount to Home...
 #Icon=add
-Icon=redo
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -a -m "${HOME}/Desktop" %F
+Icon=edit-redo.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -a -m "${HOME}" %F
 
 [Desktop Action unmount]
 Name=Unmount
 #Icon=remove
-Icon=undo
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -u %F
+Icon=edit-undo.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -u %F
 
 [Desktop Action unmount-all]
 Name=Unmount All
 #Icon=remove
-Icon=undo
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -x
+Icon=edit-undo.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -x
 
 [Desktop Action show-all]
 Name=Show All Mounts
-Icon=info
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -s
+Icon=view-list-details.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -s
 
 [Desktop Action help]
 Name=Help
-Icon=help
-Exec=$HOME/.kde/share/apps/konqueror/servicemenus/fuseisomenu.sh -h
+Icon=help-about.png
+Exec=$HOME/.kde/share/kde4/services/ServiceMenus/fuseisomenu.sh -h
