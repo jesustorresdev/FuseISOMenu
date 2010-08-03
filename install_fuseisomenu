@@ -1,0 +1,16 @@
+#!/bin/bash
+instfiles="fuseisomenu.desktop fuseisomenu.sh"
+KDEAPPSDIR="${HOME}/.kde/share/apps"
+
+for app in konqueror d3lphin dolphin; do
+    APPDIR="${KDEAPPSDIR}/${app}"
+    MENUDIR="${APPDIR}/servicemenus"
+
+    if [ -d $APPDIR ]; then
+        mkdir -p ${MENUDIR} 2>/dev/null    # doesnt pre-exist for dolphin
+        echo -n "Installing menu to $MENUDIR ... "
+        cp -a $instfiles ${MENUDIR}
+        [ $? -eq 0 ] && echo "OK" || echo "FAILED"
+    fi
+done
+echo

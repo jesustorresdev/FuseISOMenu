@@ -1,0 +1,19 @@
+0.3.0 - 20080126
+- ServiceType "all/all"
+- Version renumbering
+
+0.2.2 - 20080124
+- Added install_fuseisomenu installer script
+- Fix for Dolphin
+
+0.2.1 - 20080121
+- Fixed dialog grammar
+- Used "readlink -f" to get same path as mtab
+
+0.2 - 20080121
+- First public release
+- Cleaned up script
+- Added menus "Show All Mounts" and "Help"
+
+0.1 - 2007
+- Initial version (unreleased)

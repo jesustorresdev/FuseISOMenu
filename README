@@ -1,0 +1,43 @@
+FuseISOMenu KDE Service Menu
+by Jason Farrell <farrellj@gmail.com>, 2008
+
+DESCRIPTION:
+------------------------------
+FuseISOMenu is a simple front-end menu to "fuseiso", which must also be
+installed. It allows regular non-root users to easily mount and unmount CD/DVD
+ISO images of various formats. Currently supports plain ISO9660 Level 1 and 2,
+Rock Ridge, Joliet, zisofs. Supported image types: ISO, BIN (single track
+only), NRG, MDF, IMG (CCD).
+
+note: in many distributions each user must first be added to the "fuse" group
+(and then re-login) before he has permission to use fuse.
+
+Menu items: Actions > "FuseISO Mount/Unmount"
+- AutoMount here (./FUSEMNT-isofilename)
+- AutoMount to Desktop (~/Desktop/FUSEMNT-isofilename)
+- Mount here...
+- Mount to Desktop...
+- Unmount
+- Unmount All
+- Show All Mounts
+- Help
+
+
+INSTALLATION INSTRUCTIONS:
+Extract, then run the installer ("./install_fuseisomenu").  The installer
+script simply copies the menu and script to the following existing directories
+for it to be picked up by both Konqueror & Dolphin:
+~/.kde/share/apps/konqueror/servicemenus
+~/.kde/share/apps/d3lphin/servicemenus
+~/.kde/share/apps/dolphin/servicemenus
+
+
+USAGE:
+To mount:
+    Select one or more ISO images, then rightclick and choose Actions > FuseISO > ...:
+    - "AutoMount here (./FUSEMNT-isofilename)" --  automounts to a temporary directory named FUSEMNT-isofilename in the same directory as the ISO image.
+    - "AutoMount to Desktop (~/Desktop/FUSEMNT-isofilename)" --  automounts to a temp directory on the Desktop
+    - "Mount here..." --  mounts to a temp directory you choose
+    - "Mount to Desktop..." --  mounts to a temp directory you choose, on the Desktop
+To unmount:
+    select one or more ISO images, or their current mountpoints, then rightclick and choose Actions > FuseISO > Unmount
