@@ -2,11 +2,20 @@
 # fuseisomenu script for fuseiso konqueror service menu
 # by Jason Farrell <farrellj@gmail.com>, 2008
 # note: user must be in group "fuse" for fuse permission
+FUSEPREFIX="FUSEMNT-"  # mountdir prefix when not asking for specific mountdir
+QUIET_KDIALOG=1       # no annoying confirmation dialogs. use kdialog only when necessary
+ALLOW_ROOT=1          # allow access for the root. by default, fuse restricts file access to the user mounting the filesystem
+ALLOW_OTHER=0          # allow access for other users
+STARTUPFILE="${HOME}/.fuseisomenurc"    # script startup file. allows the user to overwrite some options
+
+if [ -f "$STARTUPFILE" ]; then
+    . "$STARTUPFILE"
+fi
+
 TITLE="FuseISOMenu"     # title prefix for all dialogs
 ERRORTMPFILE="/tmp/fuseiso.err.tmp"   # stderr tmpfile for kdialog
 MTAB_FUSEISO="${HOME}/.mtab.fuseiso"   # use users' mtab instead of global /proc/mounts
-FUSEPREFIX="FUSEMNT-"  # mountdir prefix when not asking for specific mountdir
-QUIET_KDIALOG=1       # no annoying confirmation dialogs. use kdialog only when necessary
+FUSEOPTIONS=""      # fuse mount options for fuseiso
 
 usage() {
 #cat >/dev/null<<EOF
@@ -84,7 +93,17 @@ if [ -n "$mountbasedir" ]; then
             fi
         fi
 
-        fuseiso -p "$arg" "$MOUNTDIR" 2>"$ERRORTMPFILE"
+        if [ "$ALLOW_OTHER" -eq 1 ]; then
+            FUSEOPTIONS="allow_other"
+        elif [ "$ALLOW_ROOT" -eq 1 ]; then
+            FUSEOPTIONS="allow_root"
+        fi
+
+        if [ -n "$FUSEOPTIONS" ]; then
+            FUSEOPTIONS="-o$FUSEOPTIONS"
+        fi
+
+        fuseiso -p "$arg" "$MOUNTDIR" $FUSEOPTIONS 2>"$ERRORTMPFILE"
         if [ $? -ne 0 ]; then
             ERROR="$(cat $ERRORTMPFILE)"
             if [ -n "$ERROR" ]; then
